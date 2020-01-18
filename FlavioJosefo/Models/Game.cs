@@ -9,29 +9,50 @@ namespace FlavioJosefo.Controllers
 {
     public class Game : IGame
     {
+        public LinkedList<Player> PlayersList { get; set; }
+        public int Step { get; set; }
 
-        // remove N elements in equal steps
-        public LinkedList<Player> PlayGame(LinkedList<Player> players, int jump, int start = 1)
+        public Game()
         {
-            var numberPlayers = players.Count();
-            if (numberPlayers <= 1 || jump < 1 || start < 1) return null;
+   
 
-            LinkedList<Player> deads = new LinkedList<Player>();
-            int i = (start - 2) % numberPlayers; 
-            for (int j = numberPlayers - 1; j > 0; j--)
+        }
+        // remove N elements in equal steps
+        public Player PlayGame(LinkedList<Player> players, int playerId)
+        {
+
+            var winnerList = players.Where(x => x.Id == playerId);//find Node to remove
+            var winner = winnerList.FirstOrDefault();
+
+            return winner;
+        }
+
+        public int GetPosition(int numberOfPlayers, int step){
+            if (numberOfPlayers == 1)
+                return 1;
+            else
+                /* The position returned  
+                by josephus(n - 1, k) is 
+                adjusted because the 
+                recursive call josephus(n 
+                - 1, k) considers the  
+                original position k%n + 1 
+                as position 1 */
+                return (GetPosition(numberOfPlayers - 1, step)
+                           + step - 1) % numberOfPlayers + 1;
+        }
+
+        public LinkedList<Player> AddPlayersAtCircle(string[] players)
+        {
+            LinkedList<Player> playersList = new LinkedList<Player>();
+            int position = 1;
+            foreach (var pla in players)
             {
-                i = (i + jump) % numberPlayers--; //find the index of player that will die
-                var nodesToRemove = players.Where(x => x.Id == i); //find Node to remove
-                foreach (var item in nodesToRemove)
-                {
-                    deads.AddLast(item); //add the deleted player to another list
-                    players.Remove(item); //delete player of players list
-
-                }
-                i--; //decrease the index to continue playing
+                Player player = new Player(position, pla.ToString());
+                playersList.AddLast(player);
+                position++;
             }
-
-            return players;
+            return playersList;
         }
     }
 }

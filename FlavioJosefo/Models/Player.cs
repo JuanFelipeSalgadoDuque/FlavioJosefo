@@ -7,7 +7,7 @@ using System.Web;
 
 namespace FlavioJosefo.Models
 {
-    public class Player : IPlayer
+    public class Player
     {
 
         public int Id { get; set; }
@@ -22,17 +22,6 @@ namespace FlavioJosefo.Models
             this.Name = name;
         }
 
-        public LinkedList<Player> AddPlayersAtCircle(string[] players)
-        {
-            LinkedList<Player> winner = new LinkedList<Player>();
-            int position = 1;
-            foreach (var pla in players)
-            {
-                Player player = new Player(position, pla.ToString());
-                winner.AddLast(player);
-                position++;
-            }
-            return winner;
-        }
+       
     }
 }

@@ -23,19 +23,17 @@ namespace FlavioJosefo.Controllers
                 //Read all file
                 string result = new StreamReader(file.InputStream).ReadToEnd();
 
-                //Split the names in file for \n
-                string[] data = result.Split('\n');
-
+                
                 //Mi otro controlador necesita 2 parámetros
-                return RedirectToAction("Datos", new { nom = data[0].ToString(), mail = data[1].ToString() });
+                return RedirectToAction("AddPlayers", "Game", new {players = result, step = jump});
 
             }
             catch (Exception ex)
             {
                 ViewBag.mensaje = "Se produjo un error : " + ex.Message;
+                return View("Index");
             }
-
-            return View("Index");
+           
         }
     }
 }

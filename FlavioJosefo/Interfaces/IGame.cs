@@ -10,8 +10,8 @@ namespace FlavioJosefo.Interfaces
     interface IGame
     {
 		
-		LinkedList<Player> PlayGame(LinkedList<Player> players, int jump, int start = 1);
-		
+		Player PlayGame(LinkedList<Player> players, int playerId);
+		LinkedList<Player> AddPlayersAtCircle(string[] players);
 
 	}
 }
