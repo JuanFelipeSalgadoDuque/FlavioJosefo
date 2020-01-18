@@ -9,18 +9,6 @@ namespace FlavioJosefo.Controllers
 {
     public class Game : IGame
     {
-        public LinkedList<Player> AddPlayersAtCircle(string[] players)
-        {
-            LinkedList<Player> winner = new LinkedList<Player>();
-            int position = 1;
-            foreach (var pla in players)
-            {
-                Player player = new Player(position, pla.ToString());
-                winner.AddLast(player);
-                position++;
-            }
-            return winner;
-        }
 
         // remove N elements in equal steps
         public LinkedList<Player> PlayGame(LinkedList<Player> players, int jump, int start = 1)

@@ -7,11 +7,8 @@ using System.Threading.Tasks;
 
 namespace FlavioJosefo.Interfaces
 {
-    interface IGame
+    interface IPlayer
     {
-		
-		LinkedList<Player> PlayGame(LinkedList<Player> players, int jump, int start = 1);
-		
-
-	}
+        LinkedList<Player> AddPlayersAtCircle(string[] players);
+    }
 }
