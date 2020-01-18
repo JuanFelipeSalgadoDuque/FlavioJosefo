@@ -8,8 +8,17 @@ namespace FlavioJosefo.Models
 {
     public class Player
     {
-        public int Id { get; set; }
+
+        public Guid Id { get; set; }
         [Required]
         public string Name { get; set; }
+
+        
+
+        public Player(Guid id, string name)
+        {
+            this.Id = id;
+            this.Name = name;
+        }
     }
 }
