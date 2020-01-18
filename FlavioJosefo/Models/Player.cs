@@ -9,13 +9,13 @@ namespace FlavioJosefo.Models
     public class Player
     {
 
-        public Guid Id { get; set; }
+        public int Id { get; set; }
         [Required]
         public string Name { get; set; }
 
         
 
-        public Player(Guid id, string name)
+        public Player(int id, string name)
         {
             this.Id = id;
             this.Name = name;
