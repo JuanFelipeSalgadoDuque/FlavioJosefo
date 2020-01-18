@@ -2,6 +2,7 @@
 using FlavioJosefo.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -9,7 +10,10 @@ namespace FlavioJosefo.Controllers
 {
     public class Game : IGame
     {
+        [Required]
         public LinkedList<Player> PlayersList { get; set; }
+        
+        [Required]
         public int Step { get; set; }
 
         public Game()
@@ -20,7 +24,10 @@ namespace FlavioJosefo.Controllers
         // remove element by Id
         public Player PlayGame(LinkedList<Player> players, int playerId)
         {
-
+            if (players.Count() == 0 || playerId < 1)
+            {
+                return null;
+            }
             var winnerList = players.Where(x => x.Id == playerId);//find Node to remove
             var winner = winnerList.FirstOrDefault();
 
@@ -44,6 +51,11 @@ namespace FlavioJosefo.Controllers
 
         public LinkedList<Player> AddPlayersAtCircle(string[] players)
         {
+            if (players.Length == 0)
+            {
+                return null;
+            }
+           
             LinkedList<Player> playersList = new LinkedList<Player>();
             int position = 1;
             foreach (var pla in players)
