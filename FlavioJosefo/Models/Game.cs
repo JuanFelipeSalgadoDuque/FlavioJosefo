@@ -17,7 +17,7 @@ namespace FlavioJosefo.Controllers
    
 
         }
-        // remove N elements in equal steps
+        // remove element by Id
         public Player PlayGame(LinkedList<Player> players, int playerId)
         {
 
