@@ -18,6 +18,14 @@ namespace FlavioJosefo.Controllers
         [HttpPost]
         public ActionResult Index(HttpPostedFileBase file, int jump)
         {
+            string name = file.FileName;
+            string[] extension = name.Split('.');
+            if (!extension[1].Equals("txt"))
+            {
+                ViewBag.mensaje = "Se produjo un error : Solo se permite tipo de archivo con extension .txt";
+                return View("Index");
+            }
+            
             try
             {
                 //Read all file
