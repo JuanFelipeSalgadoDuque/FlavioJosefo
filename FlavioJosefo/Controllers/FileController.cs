@@ -36,6 +36,11 @@ namespace FlavioJosefo.Controllers
                 return RedirectToAction("AddPlayers", "Game", new {players = result, step = jump});
 
             }
+            catch (FileNotFoundException ex)
+            {
+                ViewBag.mensaje = "Se produjo un error : " + ex.Message;
+                return View("Index");
+            }
             catch (Exception ex)
             {
                 ViewBag.mensaje = "Se produjo un error : " + ex.Message;
