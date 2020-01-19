@@ -49,6 +49,8 @@ namespace FlavioJosefo.Controllers
                            + step - 1) % numberOfPlayers + 1;
         }
 
+
+        //Create players and add to LinkedList
         public LinkedList<Player> AddPlayersAtCircle(string[] players)
         {
             if (players.Length == 0)
