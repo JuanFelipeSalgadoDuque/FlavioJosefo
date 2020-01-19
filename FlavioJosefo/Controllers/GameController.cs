@@ -16,9 +16,10 @@ namespace FlavioJosefo.Controllers
             //Split the names in file for \n
             string[] data = players.Split('\n');
 
-            if (data.Length < 2)
+            if (data.Length < 2 || step < 1)//File does'n contain enough  players
             {
-                return RedirectToAction("Index", "File"); //File does'n contain enough  players
+                ViewBag.mensaje = "El archivo debe contener más de un jugador";
+                return RedirectToAction("Index", "File"); 
             }
 
 
@@ -29,9 +30,7 @@ namespace FlavioJosefo.Controllers
             var winner = game.PlayGame(playersList, position); //Find the winner player
 
             ViewBag.winner = winner.Name + " in position " + winner.Id;
-
             return View();
-            
         }
     }
 }
