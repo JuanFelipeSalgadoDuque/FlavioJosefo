@@ -20,11 +20,7 @@ namespace FlavioJosefo.Controllers
         // remove N elements in equal steps
         public Player PlayGame(LinkedList<Player> players, int playerId)
         {
-
-            var winnerList = players.Where(x => x.Id == playerId);//find Node to remove
-            var winner = winnerList.FirstOrDefault();
-
-            return winner;
+            return players.FirstOrDefault(x => x.Id == playerId);//find Node to remove
         }
 
         public int GetPosition(int numberOfPlayers, int step){

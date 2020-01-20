@@ -1,17 +1,12 @@
-﻿using FlavioJosefo.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-
-namespace FlavioJosefo.Controllers
+﻿namespace FlavioJosefo.Controllers
 {
+    using System.Linq;
+    using System.Web.Mvc;
     public class GameController : Controller
     {
         // GET: Game
         [HttpGet]
-        public ActionResult AddPlayers(string players ,int step)
+        public ActionResult AddPlayers(string players, int step)
         {
             //Split the names in file for \n
             string[] data = players.Split('\n');
@@ -19,7 +14,7 @@ namespace FlavioJosefo.Controllers
             if (data.Length < 2 || step < 1)//File does'n contain enough  players
             {
                 ViewBag.mensaje = "El archivo debe contener más de un jugador";
-                return RedirectToAction("Index", "File"); 
+                return RedirectToAction("Index", "File");
             }
 
 
