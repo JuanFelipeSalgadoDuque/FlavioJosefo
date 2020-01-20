@@ -17,7 +17,7 @@ namespace UnitTestProject1
             //init
             string[] emptyPlayers = new string[0];
             Game game = new Game();
-            //act
+            //actAddPlayersAtCircle
             
             var result = game.AddPlayersAtCircle(emptyPlayers);
             

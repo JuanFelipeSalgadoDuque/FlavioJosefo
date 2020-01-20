@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
@@ -25,15 +23,15 @@ namespace FlavioJosefo.Controllers
                 ViewBag.mensaje = "Se produjo un error : Solo se permite tipo de archivo con extension .txt";
                 return View("Index");
             }
-            
+
             try
             {
                 //Read all file
                 string result = new StreamReader(file.InputStream).ReadToEnd();
 
-                
+
                 //Mi otro controlador necesita 2 parámetros
-                return RedirectToAction("AddPlayers", "Game", new {players = result, step = jump});
+                return RedirectToAction("AddPlayers", "Game", new { players = result, step = jump });
 
             }
             catch (FileNotFoundException ex)
@@ -46,7 +44,7 @@ namespace FlavioJosefo.Controllers
                 ViewBag.mensaje = "Se produjo un error : " + ex.Message;
                 return View("Index");
             }
-           
+
         }
     }
 }
